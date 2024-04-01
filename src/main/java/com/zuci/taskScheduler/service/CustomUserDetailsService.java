@@ -3,6 +3,7 @@ package com.zuci.taskScheduler.service;
 
 import com.zuci.taskScheduler.model.SignUp;
 import com.zuci.taskScheduler.repository.SignUpRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
@@ -26,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SignUp sign=signUpRepository.findUserByUsername(username);
 
-//        System.out.println(sign);
+
         if (sign==null){
             return null;
         }

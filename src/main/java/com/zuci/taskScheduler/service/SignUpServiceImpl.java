@@ -6,6 +6,7 @@ import com.zuci.taskScheduler.exception.UserNameAlreadyExistException;
 import com.zuci.taskScheduler.model.Role;
 import com.zuci.taskScheduler.model.SignUp;
 import com.zuci.taskScheduler.repository.SignUpRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 
 @Service
+@Slf4j
 public class SignUpServiceImpl implements SignUpService {
     @Autowired
     private SignUpRepository signUpRepository;
@@ -20,7 +22,7 @@ public class SignUpServiceImpl implements SignUpService {
     private PasswordEncoder passwordEncoder;
     @Override
     public SignUp createUser(SignUp signUp) {
-
+       log.info(signUp.getUsername());
         SignUp sign=signUpRepository.findUserByUsername(signUp.getUsername());
         if(sign==null) {
             SignUp sign1 = signUpRepository.findUserByEmailId(signUp.getEmailId());
