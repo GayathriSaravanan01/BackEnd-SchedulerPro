@@ -39,7 +39,7 @@ public class SignUpController {
 
     @PostMapping("/login")
     public String loginUser(@RequestBody Login login){
-        //log.info("mhysugfecdv");
+        log.info(login.getUsername());
         UserDetails userDetails =customUserDetailsService.loadUserByUsername(login.getUsername());
         if(userDetails==null) {
             return "Invalid username. ";
