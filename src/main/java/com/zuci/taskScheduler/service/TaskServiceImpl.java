@@ -146,7 +146,7 @@ public class TaskServiceImpl implements TaskService{
     }
 
     private void sendNotificationEmail(List<String> emailIds, List<TaskDetail> tasks) {
-        for (String email : emailIds) {
+        for (String email : emailIds){
             log.info(email);
             for (TaskDetail task : tasks) {
                 SimpleMailMessage message = new SimpleMailMessage();
