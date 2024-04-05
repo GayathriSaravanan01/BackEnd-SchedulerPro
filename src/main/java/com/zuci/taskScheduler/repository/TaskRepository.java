@@ -27,5 +27,9 @@ public interface TaskRepository extends JpaRepository<TaskDetail,Integer> {
     @Query("SELECT t FROM TaskDetail t WHERE t.username = :username ORDER BY t.dateForSchedule ASC, t.startTime ASC")
     List<TaskDetail> getAllTaskByusername(@Param("username") String username);
 
+    @Query("SELECT t FROM TaskDetail t WHERE t.dateForSchedule = :date AND t.username = :username ORDER BY t.taskName ASC")
+    List<TaskDetail> getTaskDetailsInAsc(Date date,@Param("username") String username);
+    @Query("SELECT t FROM TaskDetail t WHERE t.dateForSchedule = :date AND t.username = :username ORDER BY t.taskName DESC")
+    List<TaskDetail> getTaskDetailsInDesc(@Param("date") Date date, @Param("username") String username);
 
 }

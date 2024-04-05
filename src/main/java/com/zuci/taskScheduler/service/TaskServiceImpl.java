@@ -117,6 +117,16 @@ public class TaskServiceImpl implements TaskService{
         return taskRepository.getAllTaskByusername(getUsernameFromToken(request));
     }
 
+    @Override
+    public List<TaskDetail> getTaskDetailsInAsc(Date date,HttpServletRequest request) {
+        return taskRepository.getTaskDetailsInAsc(date,getUsernameFromToken(request));
+    }
+
+    @Override
+    public List<TaskDetail> getTaskDetailsInDesc(Date date, HttpServletRequest request) {
+        return taskRepository.getTaskDetailsInDesc(date,getUsernameFromToken(request));
+    }
+
     @Scheduled(fixedRate = 60000)
     public void sendTaskNotifications() {
         LocalDateTime currentDateTime = LocalDateTime.now();
@@ -153,12 +163,10 @@ public class TaskServiceImpl implements TaskService{
                 message.setTo(email);
                 message.setSubject("Task Reminder");
                 message.setText("Reminder:Your task \"" + task.getTaskName() + "\"  will be starting in 10 minutes. Prepare accordingly.");
-
                 emailSender.send(message);
             }
         }
     }
-
 }
 
 

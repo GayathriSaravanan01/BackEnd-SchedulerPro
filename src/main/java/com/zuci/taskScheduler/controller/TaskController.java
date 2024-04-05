@@ -58,5 +58,13 @@ public class TaskController {
             return "not update";
         }
     }
+    @GetMapping("/task/date/asc/{dateForSchedule}")
+    public List<TaskDetail> getTaskDetailsInAsc(@PathVariable("dateForSchedule") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateForSchedule, HttpServletRequest request){
+        return taskService.getTaskDetailsInAsc(dateForSchedule,request);
+    }
+    @GetMapping("/task/date/desc/{dateForSchedule}")
+    public List<TaskDetail> getTaskDetailsInDesc(@PathVariable("dateForSchedule") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateForSchedule, HttpServletRequest request){
+        return taskService.getTaskDetailsInDesc(dateForSchedule,request);
+    }
 
 }

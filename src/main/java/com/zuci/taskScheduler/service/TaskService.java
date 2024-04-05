@@ -20,4 +20,8 @@ public interface TaskService {
     public TaskDetail updateTaskByTaskId(TaskDetail taskDetail);
 
     public List<TaskDetail> getAllTaskByUserName(HttpServletRequest request);
+
+    public List<TaskDetail> getTaskDetailsInAsc(Date date,HttpServletRequest request);
+
+    public List<TaskDetail> getTaskDetailsInDesc(Date date, HttpServletRequest request);
 }
